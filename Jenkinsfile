@@ -17,7 +17,7 @@ pipeline {
                 sh './gradlew clean compileJava'
                 sh './gradlew clean test'
                 junit '**/test-results/test/*.xml'
-                sh './gradlew sonarqube -Dsonar.host.url=http://51.158.120.222:8085 -Dsonar.login=929b0fdd2771a2227aa7c209b8227918be5923da -Dsonar.java.coveragePlugin=jacoco'
+                sh './gradlew sonarqube -Dsonar.host.url=http://51.158.120.222:8085 -Dsonar.login=da47239c76c1b9747a86f8a648883946950e6327 -Dsonar.java.coveragePlugin=jacoco'
                 sh './gradlew clean customFatJar'
                 dir('.ci') {
                     stash name: 'dockerfile', includes: 'Dockerfile'
