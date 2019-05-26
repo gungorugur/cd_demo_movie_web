@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Online Movie Database</TITLE>
+    <style>
+        body {background-color: powderblue;}
+        h1   {color: blue;}
+        p    {color: red;}
+        table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size:15px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+    <body>
+        <center>
+        <h2>$movies.size() movies found!</h2>
+        <br/>
+        <table class="gridtable">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Rating</th>
+            </tr>
+            #foreach( $movie in $movies )
+            <tr>
+                <td><a href="/movies/$movie.getId()">$movie.getId()</a></td>
+                <td>$movie.getName()</td>
+                <td>$movie.getRating()</td>
+            </tr>
+            #end
+        </table>
+        <br/>
+        </center>
+    </body>
+</html>

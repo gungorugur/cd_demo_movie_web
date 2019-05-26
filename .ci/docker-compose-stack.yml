@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  movie-web:
+    environment:
+      - VERSION=${VERSION}
+      - ENV=${ENV}
+    image: 51.15.240.50:8082/movie-web:$VERSION
+    stop_grace_period: 3s
+    ports:
+      - 4567:4567
+    healthcheck:
+      test:             ["CMD", "wget", "http://localhost:4567/health", "-O", "-"]
+      interval:        10s
+      timeout:         10s
+      retries:         10
+    deploy:
+      replicas: 2
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        failure_action: rollback
+        delay: 20s
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://51.158.97.253:12201"
+        tag: "movie-web,${ENV}
