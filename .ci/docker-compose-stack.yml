@@ -26,4 +26,4 @@ services:
       driver: "gelf"
       options:
         gelf-address: "udp://51.158.97.253:12201"
-        tag: "movie-web,${ENV}
+        tag: "movie-web,${ENV}"
